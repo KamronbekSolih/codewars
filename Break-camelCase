@@ -1,0 +1,31 @@
+"""
+Created on Sun Jul 16 14:06:45 2023
+
+@author: Kamronbek Solih
+
+https://www.codewars.com/kata/5208f99aee097e6552000148
+
+"""
+# Complete the solution so that the function will break up camel casing, using a space between words.
+
+import string
+def solution(s):
+    word = list(s)
+    words = []
+    for letter in word:
+        if letter in string.ascii_uppercase: #if letter is upper case 
+            words.append(" "+letter) 
+        else:
+            words.append(letter)
+    return ''.join(words)
+            
+print(solution("breakCamelCase"))
+
+
+
+# Best solution
+# =============================================================================
+# 
+# def solution(s):
+#     return ''.join(' ' + c if c.isupper() else c for c in s)
+# =============================================================================
