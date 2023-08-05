@@ -1,0 +1,33 @@
+#my solution. This code is somehow full mess but it still works and passed all tests. The most amusing thing is lens.pop() at the end of the code. Before When I run the code it returned an array with unnecessary 0 at the end, and I came up with thsi so called "creative solution"
+def cut_the_ropes(ropes):
+    lens = [] # for storing number of left ropes after every cutting
+
+    while all(ropes): # if all elements are 0 then it returns false
+        lens.append(len(ropes)) 
+        try:
+            shortest = min(ropes) #preventing from value error
+        except:
+            break
+        
+        for i in range(len(ropes)):
+                    ropes[i] = ropes[i]-shortest #subtracting minimum length from each element
+        ropes = [i for i in ropes if i != 0] #removing 0 from the list
+    lens.pop() #removing the las 0. I do not know where it come from ^^
+
+    return lens
+
+#My solution optimized by chatgpt:
+
+def cut_the_ropes(ropes):
+    lens = []  # for storing number of left ropes after every cutting
+
+    while ropes:  # if ropes list is not empty
+        lens.append(len(ropes))
+        shortest = min(ropes)  # find the shortest rope
+
+        for i in range(len(ropes)):
+            ropes[i] -= shortest  # subtracting minimum length from each element
+
+        ropes = [i for i in ropes if i != 0]  # remove 0-length ropes from the list
+
+    return lens
